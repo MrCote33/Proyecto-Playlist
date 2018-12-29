@@ -3,7 +3,6 @@
 #include <string.h>
 #define COD 5
 #define MAX 100 //MAXIMO LINEA
-
 typedef struct cancion{//CANCIONES
 
 	int codigo[COD];
@@ -15,11 +14,11 @@ typedef struct cancion{//CANCIONES
 
 }CANCION;
 
-/*void Borrar(CANCION *L, int n){
+void Borrar(CANCION *L, int n){
 	CANCION aux= *L; //PUNTERO AUXILIAR
 	*L= *L -> sig; // L APUNTA AL SIGUIENTE NODO
-	free(aux); //ELIMININA EL PRIMER NODO DE LA MEMORIA
-}*/
+	//free(aux); //ELIMININA EL PRIMER NODO DE LA MEMORIA
+}
 
 void CFichero(){//CREARA UN FICHERO
 	FILE*nueva;
@@ -68,7 +67,7 @@ void MenuAdmin(){//MENU ADMINISTRADOR
 					do{
 						FILE*p;
 						p=fopen("catalogo.txt","r");
-						if(p==NULL){//VERIFICA QUE EL FICHERO EXISTA
+						if(p==NULL){        //VERIFICA QUE EL FICHERO EXISTA
 							printf("El fichero no existe");
 							system("pause");
 							exit(-1);
@@ -80,7 +79,7 @@ void MenuAdmin(){//MENU ADMINISTRADOR
 							}
 						}
 
-						printf("Desea salir?\n1-si\n2-no\n");
+						printf("¿Desea salir?\n1-si\n2-no\n");
 						printf("\nOpcion>>>");
 						scanf("%d",&op);
 
@@ -92,7 +91,8 @@ void MenuAdmin(){//MENU ADMINISTRADOR
 
 					system("cls");
 					do{
-						printf("\tMENU Reportes\n\n");
+						char caracteres[MAX];
+						printf("\t MENU REPORTES\n\n");
 						printf("Que desea ver?\n\n");
 						printf("1- Cantidad de listas creadas\n");
 						printf("2- Top 5 listas con mas canciones\n");
@@ -104,6 +104,13 @@ void MenuAdmin(){//MENU ADMINISTRADOR
 						switch(op){
 
 							case 1:
+								FILE *Listas;
+								Listas= fopen("Listas.txt", "r");
+								
+								while(fgets(caracteres,MAX,Listas) != NULL){
+									printf("%s",caracteres);
+								}
+								system ("pause");
 
 							break;
 
@@ -121,7 +128,7 @@ void MenuAdmin(){//MENU ADMINISTRADOR
 
 							default:
 								system("cls");
-								printf("la opcion que ingreso no existe\n");
+								printf("La opcion que ingreso no existe\n");
 								system("pause");
 							break;
 
@@ -139,7 +146,7 @@ void MenuAdmin(){//MENU ADMINISTRADOR
 				default:
 
 					system("cls");
-					printf("la opcion que ingreso no existe\n");
+					printf("La opcion que ingreso no existe\n");
 					system("pause");
 
 				break;
@@ -149,7 +156,7 @@ void MenuAdmin(){//MENU ADMINISTRADOR
 
 	}else{
 
-		printf("usuario o clave incorrectos\n");
+		printf("Usuario o clave incorrectos\n");
 		system("pause");
 
 	}
@@ -200,7 +207,7 @@ void MenuUser(){//MENU USUARIO
 					//Gestionar();
 					system("cls");
 					do{
-						CANCION miLista= NULL;
+						Lista= NULL;
 						opc==0;
 						printf("¿Que desea hacer?\n\n");
 						printf("1- Agregar cancion\n");
@@ -220,13 +227,13 @@ void MenuUser(){//MENU USUARIO
 							break;
 
 							case 3:
-								/*int n; //VARIABLE DONDE SE ALMACENA EL NUMERO A BORRAR
+								int n; //VARIABLE DONDE SE ALMACENA EL NUMERO A BORRAR
 								system("cls"); //BORRA LA PANTALLA
 								printf("Ingrese el numero de la cancion a borrar: \n");
 								scanf("%d", &n);
 								system("cls");
-								Borrar(&miLista,n);//LLAMA LA FUNCION BORRAR
-								getch();*/
+								Borrar(&Lista,n);//LLAMA LA FUNCION BORRAR
+								getch();
 								
 								break;
 
@@ -287,7 +294,7 @@ void MenuP(){//MENU PRINCIPAL
 		switch(opcion){
 
 			case 1:
-				MenuAd();
+				MenuAdmin();
 			break;
 
 			case 2:
@@ -302,7 +309,7 @@ void MenuP(){//MENU PRINCIPAL
 
 			default:
 				system("cls");
-				printf("la opcion que ingreso no existe\n");
+				printf("La opcion que ingreso no existe\n");
 				system("pause");
 			break;
 		}
