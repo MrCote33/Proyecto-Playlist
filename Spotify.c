@@ -15,11 +15,11 @@ typedef struct cancion{//CANCIONES
 
 }CANCION;
 
-void Borrar(CANCION *L, int n){
+/*void Borrar(CANCION *L, int n){
 	CANCION aux= *L; //PUNTERO AUXILIAR
 	*L= *L -> sig; // L APUNTA AL SIGUIENTE NODO
 	free(aux); //ELIMININA EL PRIMER NODO DE LA MEMORIA
-}
+}*/
 
 void CFichero(){//CREARA UN FICHERO
 	FILE*nueva;
@@ -220,13 +220,13 @@ void MenuUser(){//MENU USUARIO
 							break;
 
 							case 3:
-								int n; //VARIABLE DONDE SE ALMACENA EL NUMERO A BORRAR
+								/*int n; //VARIABLE DONDE SE ALMACENA EL NUMERO A BORRAR
 								system("cls"); //BORRA LA PANTALLA
 								printf("Ingrese el numero de la cancion a borrar: \n");
 								scanf("%d", &n);
 								system("cls");
 								Borrar(&miLista,n);//LLAMA LA FUNCION BORRAR
-								getch();
+								getch();*/
 								
 								break;
 
